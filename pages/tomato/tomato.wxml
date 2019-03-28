@@ -1,0 +1,20 @@
+<view class="tomoto-container">
+  <view class="clock"><t-clock text="{{time}}" fontSize="52"></t-clock></view>
+  <view wx:if='{{!againButtonVisible}}'>
+    <view class="stop">
+      <t-button type="change" size="mini" text="暂停" bindtap='clearTimer' wx:if="{{timerStatus === 'stop'}}"></t-button>
+      <t-button type="change" size="mini" text="开始" bindtap='startTimer' wx:else></t-button>
+    </view>
+    <view class="abandon"><t-button size="mini" text="放弃" bindtap='showConfirm'></t-button></view>
+  </view>
+  <view class="again"  bindtap='againTimer' wx:else>
+    <t-button size="mini" type="change" text="再来一组" ></t-button>
+  </view>
+  <view class='abandonConfirm'>
+  <t-confirm visible="{{confirmVisible}}" bindconfirm="confirmAbandon" bindcancel="hideAbandon" placeholder="放弃理由"></t-confirm>
+  </view>
+  <view class='finishConfirm'> 
+  <t-confirm visible="{{finishConfirmVisible}}" bindconfirm="confirmFinish" bindcancel="confirmCancel" placeholder="完成了什么"></t-confirm>
+  </view>
+  
+</view>

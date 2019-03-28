@@ -1,0 +1,12 @@
+/* pages/tomato/tomato.wxss */
+.tomoto-container {
+  background: #F0F7F6;
+  height: 100vh;
+}
+.clock {
+  padding-top: 240rpx;
+  padding-bottom: 100rpx;
+}
+.stop {
+  margin-bottom: 48rpx;
+}

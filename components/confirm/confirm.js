@@ -7,21 +7,29 @@ Component({
     visible: {
       type: Boolean,
       value: true
+    },
+    value:{
+      type:String,
+      value:''
     }
   },
   data: {
-    value: ""
-  },
+    _value: ""
+  }, 
   methods: {
     confirm() {
-      this.triggerEvent('confirm', this.data.value)
+      console.log('传入', this.data._value)
+      this.triggerEvent('confirm', this.data._value)
+      this.data._value = ''
     },
     cancel() {
-      this.triggerEvent('cancel', this.data.value)
+      console.log('传入', this.data._value)
+      this.triggerEvent('cancel', this.data._value)
+      this.data._value = ''
     },
     watchValue(event) {
-      console.log(event)
-      this.data.value = event.detail.value
+      this.data._value = event.detail.value  
+      
     }
   }
 })

@@ -1,4 +1,5 @@
 <view class="tomoto-container">
+<view class='ending'>距结束还有</view>
   <view class="clock"><t-clock text="{{time}}" fontSize="52"></t-clock></view>
   <view wx:if='{{!againButtonVisible}}'>
     <view class="stop">

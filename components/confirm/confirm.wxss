@@ -9,7 +9,7 @@
 .confirm { 
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 35%;
   transform: translate(-50%,-50%);
   padding: 26rpx 20rpx 0 20rpx;
   background: #fff;

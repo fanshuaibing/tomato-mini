@@ -1,6 +1,8 @@
 /* pages/tomato/tomato.wxss */
 .tomoto-container {
   background: #F0F7F6;
+  box-sizing: border-box;
+  position: relative;
   height: 100vh;
 }
 .clock {
@@ -9,4 +11,15 @@
 }
 .stop {
   margin-bottom: 48rpx;
+}
+
+.ending{
+  font-family: PingFangSC-Regular;
+  text-align: center;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 36rpx;
+  color: #F87A5F ;
 }

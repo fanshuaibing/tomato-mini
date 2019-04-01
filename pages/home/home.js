@@ -14,7 +14,8 @@ Page({
     this.getLists()
   },
   getLists(){//初始化
-    http.get('/todos?completed=false').then(res => {
+    http.get('/todos?completed = false').then(res => {
+      console.log(res)
       if (res.data.resources) {
         this.data.lists = res.data.resources
         this.setData({ lists: this.data.lists })
@@ -52,6 +53,11 @@ Page({
      }).then(res => {
        this.getLists()
        this.hideUpdate()
+       wx.showToast({
+         title: '修改成功',
+         icon: 'success',
+         duration: 1000
+       })
      })
    }
   this.hideUpdate()
@@ -69,6 +75,11 @@ Page({
       let todo =res.data.resource
       this.data.lists[index] = todo
       this.setData({lists: this.data.lists})
+      wx.showToast({
+        title: '确认完成',
+        icon: 'success',
+        duration: 1000
+      })
     })
     
     

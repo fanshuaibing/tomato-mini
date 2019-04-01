@@ -1,12 +1,11 @@
 .me-container { 
   background: #F6F6F6;
-  min-height: 100vh;
-  max-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
  }
 .header { 
-  height: 170rpx;
   background: #fff;
   display: flex;
   align-items: center;
@@ -23,9 +22,8 @@
   margin-right: 20rpx;
 }
 .header .details { 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  font-size: 38rpx;
   flex: 1;
  }
 
@@ -68,11 +66,12 @@
 }
 
 .me-container .lists { 
-  flex: 1;
+  height: 800rpx;
+  overflow: scroll;
   padding: 0 24rpx;
   box-sizing:  border-box;
-  overflow: scroll;
  }
+
 
 .me-container .lists .item {
   background: #fff;
@@ -92,6 +91,9 @@
 .me-container .lists .item .content {
   display: flex;
   padding-bottom: 24rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  color: #333333 ;
 }
 .me-container .lists .item .content text {
   padding-right: 25rpx;
@@ -102,4 +104,3 @@
 }
 .qr::after { border: none; }
 .qr { background: transparent; color: #FE996F; font-size: 24rpx;}
-

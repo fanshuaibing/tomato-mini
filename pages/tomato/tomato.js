@@ -1,16 +1,22 @@
 // pages/tomoto/tomoto.js
+const {http} =require('../../lib/http.js')
 Page({
   timer:'',
   data: {
-    defalutSecond: 1500,
+    defalutSecond: 10,
     time: '',
     timerStatus: 'stop',
     finishConfirmVisible: false,
     againButtonVisible: false,
-    confirmVisible: false
+    confirmVisible: false,
+    tomato: {}
   },
   onShow(){
     this.startTimer()
+    http.post('/tomatoes').then(response => {
+      console.log(response)
+      this.tomato = response.data.resource
+    })
   },
   startTimer() {
     this.setData({ timerStatus: 'stop' })
@@ -35,15 +41,29 @@ Page({
     this.clearTimer()
   },
   confirmFinish(event){
+    let content = event.detail
     this.setData({ finishConfirmVisible :false})
+    http.put(`/tomatoes/${this.tomato.id}`, {
+      description: content,
+      aborted: false
+    })
+      .then(response => {
+        console.log(response)
+        wx.navigateBack({ to: -1 })
+      })
+   
   }, 
   confirmCancel() {
     this.setData({ finishConfirmVisible: false })
   },
   confirmAbandon(event){
+    console.log(event)
     this.setData({ confirmVisible: false })
     this.setData({time: '00 : 00'})
     this.setData({ againButtonVisible  : true})
+    let content = event.detail
+    
+   
   },
   hideAbandon() {
     this.setData({ confirmVisible: false })

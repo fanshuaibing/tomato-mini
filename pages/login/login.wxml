@@ -10,5 +10,5 @@
         bindgetuserinfo="login"
         withCredentials="true">登 录</button>
     
-    <navigator url="/pages/binding/binding" class="binding">还没有与pc端绑定？去绑定 ></navigator>
+    <!-- <navigator url="/pages/binding/binding" class="binding">还没有与pc端绑定？去绑定 ></navigator> -->
   </view>

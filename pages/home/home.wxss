@@ -57,10 +57,10 @@
     }
   .todoList .item .select {
      border-radius: 50%;
-     width: 28rpx;
-     height: 28rpx;
+     width: 38rpx;
+     height: 38rpx;
      border: 4rpx solid #FE996F;
-     margin-right: 30rpx;
+     margin-right: 38rpx;
      position: relative;
     }
   .todoList .item .select.active::before {

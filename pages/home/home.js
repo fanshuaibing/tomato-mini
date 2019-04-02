@@ -38,7 +38,6 @@ Page({
   
   }, 
   updateTodos(event){//更新
-
     let { id, index } = event.currentTarget.dataset
     this.updateId =id
     let description = this.data.lists[index].description

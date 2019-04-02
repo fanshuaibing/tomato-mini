@@ -7,20 +7,21 @@
       data-index="{{index}}"
       data-id="{{item.id}}"
       wx:if="{{!item.completed}}"
-      bindlongpress="destroyTodo"
-      bindtap="updateTodos"
+      
     >
-      <view   class="select {{item.completed && 'active'}}"></view>
-      <text>{{item.description}}</text>
+      <view bindtap="destroyTodo"  data-index="{{index}}"
+      data-id="{{item.id}}"  class="select {{item.completed && 'active'}}"></view>
+      <text bindtap="updateTodos"  data-index="{{index}}"
+      data-id="{{item.id}}" >{{item.description}}</text>
     </view>
   </scroll-view>
-  <t-button type="change" class="createButton" text="创建任务" bindtap='showConfirm'>创建任务</t-button>
+  <t-button type="change"   class="createButton" text="创建任务" bindtap='showConfirm'>创建任务</t-button>
   <view class="tomato-wrapper">
     <navigator class="tomato" url="/pages/tomato/tomato">
      <t-clock text="点击开始闹钟"></t-clock>
     </navigator>
   </view>
- <t-confirm  bindconfirm="confirmCreate" bindcancel="hideConfirm" 
+ <t-confirm  bindconfirm="confirmCreate"  bindcancel="hideConfirm" 
   visible="{{visibleConfirm}}"></t-confirm>
   <t-confirm value="{{newTodos}}"  bindconfirm="confirmUpdate" bindcancel="hideUpdate"  visible="{{visibleUpdate}}"></t-confirm>
 </view>

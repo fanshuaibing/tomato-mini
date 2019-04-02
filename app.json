@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/me/me",
     "pages/login/login",
     "pages/audio/audio",
-    "pages/me/me",
+    
     "pages/tomato/tomato",
     "pages/home/home",
     "pages/binding/binding"

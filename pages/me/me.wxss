@@ -53,20 +53,29 @@
 .tabs > view.hover-active { 
   opacity: 0.5;
  }
-.tabs > view.active::after {
-  content: "";
-  width: 80%;
-  height: 8rpx;
+
+.afterTabs{
+  display: inline-block;
+  border: 4rpx solid #F87A5F;
+  margin-top: -40rpx;
   border-radius: 4rpx;
-  background: #FE996F;
-  position: absolute;
-  left: 50%;
-  bottom: -16rpx;
-  transform: translate(-50%,-50%);
+  margin-left: 10%;
+  width: 30%;
+  transition: all 1s;
+  margin-bottom: 30rpx;
+}
+ .afterTabs.active{
+  margin-left: 60%;
 }
 
+
+
+
+.swiper-wrapper{
+  height: 900rpx;
+}
 .me-container .lists { 
-  height: 800rpx;
+  height: 900rpx;
   overflow: scroll;
   padding: 0 24rpx;
   box-sizing:  border-box;
@@ -104,3 +113,4 @@
 }
 .qr::after { border: none; }
 .qr { background: transparent; color: #FE996F; font-size: 24rpx;}
+

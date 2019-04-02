@@ -12,38 +12,47 @@
 
   <view class="tabs">
     <view hover-class='hover-active' 
-          class="{{tab === 'tomato' && 'active'}}" 
-          data-name="tomato" bindtap="changeTab">
+          data-name="0" bindtap="changeTomato">
           番茄历史
     </view>
     <view hover-class='hover-active' 
-          class="{{tab === 'task' && 'active'}}" 
-          data-name="task" bindtap="changeTab">
+         
+          data-name="1" bindtap="changeTask">
           我完成的任务
     </view>
   </view>
+  <view class=' {{ tab == "1" ? "active afterTabs" : "afterTabs"  }}' ></view>
   <view class='lists-wrapper'>
-    <scroll-view scroll-y="true" class="lists" wx:if="{{tab === 'tomato'}}">
-      <view class="item" wx:for="{{tomatoes}}"  wx:for-index="key" wx:key="index">
-        <wxs src="../../lib/formattor.wxs" module="formattor"></wxs>
-        <view class="time">{{formattor.monthFormat(key)}}</view>
-        <view class="content" wx:for="{{tomatoes[key]}}" wx:if="{{item.description}}"                 wx:for-index="index" wx:key="index">
-          <text class=''>{{formattor.dateFormat(item.created_at,"hh:mm")}}</text>
-          <view class="detail">{{item.description}}</view>
+  <swiper bindchange="swiperChange" class='swiper-wrapper' current="{{tab}}" bindtransition="transitionChange">
+    <swiper-item >
+      <scroll-view scroll-y="true" class="lists" >
+        <view  class="item" wx:for="{{tomatoes}}"  wx:for-index="key" wx:key="index">
+          <wxs src="../../lib/formattor.wxs" module="formattor"></wxs>
+          <view class="time">{{formattor.monthFormat(key)}}</view>
+          <view class="content" wx:for="{{tomatoes[key]}}" wx:if="{{item.description}}"                 wx:for-index="index" wx:key="index">
+            <text class=''>{{formattor.dateFormat(item.created_at,"hh:mm")}}</text>
+            <view class="detail">{{item.description}}</view>
+          </view>
         </view>
-      </view>
-    </scroll-view>
+      </scroll-view>
+    </swiper-item>
 
-      <scroll-view scroll-y="true" class="lists" wx:if="{{tab === 'task'}}">
+    <swiper-item class='swiper-task'>
+    <scroll-view scroll-y="true" class="lists">
         <view class="item" wx:for="{{todos}}" wx:for-index="key" wx:key="index">
           <wxs src="../../lib/formattor.wxs" module="formattor"></wxs>
           <view class="time">{{formattor.monthFormat(key)}}</view>
-          <view class="content" wx:for="{{todos[key]}}" wx:if="{{item.completed}}" wx:for-index="index" wx:key="index">
+          <view class="content" wx:for="{{todos[key]}}" wx:if="{{item.completed}}"            wx:for-index="index" wx:key="index">
             <text class='text'>{{formattor.dateFormat(item.created_at,"hh:mm")}}</text>
             <view class="detail">{{item.description}}</view>
           </view>
         </view>
       </scroll-view>
+    </swiper-item>
+</swiper>
+    
+
+      
   </view>
   
 </view>

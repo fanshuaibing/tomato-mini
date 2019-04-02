@@ -3,9 +3,9 @@ const { http } = require('../../lib/http.js');
 
 Page({
   data: {
-    tab: "tomato",
+    tab:'0',
     tomatoes: {},
-    todos: {}
+    todos: {},
   },
   onShow: function () {
     this.fetchTomatoes()
@@ -15,7 +15,6 @@ Page({
     http.get('/tomatoes', { is_group: "yes" })
       .then(response => {
         this.setData({ tomatoes: response.data.resources })
-        
       })
   },
   fetchTodos() {
@@ -27,8 +26,21 @@ Page({
         this.setData({ todos: response.data.resources })
       })
   },
-  changeTab(event) {
+  swiperChange(event){
+    console.log(event)
+    this.setData({tab : event.detail.current })
+
+  },
+  changeTomato(event) {
+    console.log(event)
     let name = event.currentTarget.dataset.name
-    this.setData({ tab: name })
+    this.setData({ tab: '0'})
+    
+  },
+  changeTask(event){
+    console.log(event)
+    let name = event.currentTarget.dataset.name
+    this.setData({ tab: '1'})
   }
+
 })

@@ -11,13 +11,13 @@ Page({
     this.fetchTomatoes()
     this.fetchTodos()
   },
-  fetchTomatoes() {
+  fetchTomatoes() { //获取番茄历史
     http.get('/tomatoes', { is_group: "yes" })
       .then(response => {
         this.setData({ tomatoes: response.data.resources })
       })
   },
-  fetchTodos() {
+  fetchTodos() {//获取 完成的任务 
     http.get('/todos',{
       is_group: 'yes'
     })

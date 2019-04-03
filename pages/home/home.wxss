@@ -45,6 +45,11 @@
     border-radius: 8rpx;
     padding: 17rpx 50rpx;
     margin-bottom: 24rpx;
+    transition: all 1s ease-out;
+   }
+   .item.active{
+     opacity: 0.1;
+     transition: all 1s ease-out;
    }
   .todoList .item:last-child { margin: 0; }
   .todoList .item text {
@@ -63,14 +68,7 @@
      margin-right: 38rpx;
      position: relative;
     }
-  .todoList .item .select.active::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    width: 28rpx;
-    height: 28rpx;
-    border-radius: 50%;
+  .todoList .item .select.active {
     background: #FE996F;
+    transition: all 1s ease-out;
   }  

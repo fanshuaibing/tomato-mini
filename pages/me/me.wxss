@@ -11,19 +11,20 @@
   align-items: center;
   color: #FE996F;
   font-size: 22rpx;
-  padding: 0 45rpx;
-  margin-bottom: 23rpx;
+  padding: 10rpx 40rpx;
+  margin-bottom: 24rpx;
  }
 .header .avatar {
-  width: 88rpx;
-  height: 88rpx;
+  width: 80rpx;
+  height: 80rpx;
   border-radius: 50%;
   overflow: hidden;
-  margin-right: 20rpx;
+  margin: 0rpx 20rpx;
 }
 .header .details { 
   align-items: center;
   font-size: 38rpx;
+  padding: 20rpx 10rpx;
   flex: 1;
  }
 
@@ -38,15 +39,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: #333;
   padding: 20rpx 0;
   margin-bottom: 24rpx;
 }
 .tabs > view { 
   text-align: center;
-  position: relative;
-  padding: 4rpx 0rpx;
+  padding: 10rpx 0rpx;
   height: 100%;
   width: 50%;
  }
@@ -57,25 +57,22 @@
 .afterTabs{
   display: inline-block;
   border: 4rpx solid #F87A5F;
-  margin-top: -40rpx;
+  margin-top: -35rpx;
   border-radius: 4rpx;
   margin-left: 10%;
   width: 30%;
   transition: all 1s;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
 }
  .afterTabs.active{
   margin-left: 60%;
 }
 
-
-
-
 .swiper-wrapper{
-  height: 900rpx;
+  height: 880rpx;
 }
 .me-container .lists { 
-  height: 900rpx;
+  height: 880rpx;
   overflow: scroll;
   padding: 0 24rpx;
   box-sizing:  border-box;
@@ -88,8 +85,8 @@
   color: #333;
   border-radius: 8rpx;
   padding: 16rpx 28rpx 35rpx 40rpx;
-  box-shadow: 0rpx 2rpx 6rpx 0rpx rgba(0,0,0,0.10);
-  margin-bottom: 32rpx;
+  box-shadow: 1rpx 2rpx 6rpx 4rpx rgba(0,0,0,0.10);
+  margin-bottom: 30rpx;
 }
 
 .me-container .lists .item .time {

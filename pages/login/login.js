@@ -14,10 +14,12 @@ Page({
  },
   wxLogin(encrypted_data, iv){
     wx.login({
-      success: (res) => this.loginMe(res.code, iv, encrypted_data)
+      success: (res) => {
+        this.loginMe(res.code, iv, encrypted_data)}
     })
   },
   loginMe(code, iv, encrypted_data){
+    //登录
     http.post('/sign_in/mini_program_user',{
       code,
       iv,

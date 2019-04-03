@@ -13,12 +13,12 @@
   <view class="tabs">
     <view hover-class='hover-active' 
           data-name="0" bindtap="changeTomato">
-          番茄历史
+          我完成的任务
     </view>
     <view hover-class='hover-active' 
          
           data-name="1" bindtap="changeTask">
-          我完成的任务
+          番茄历史
     </view>
   </view>
   <view class=' {{ tab == "1" ? "active afterTabs" : "afterTabs"  }}' ></view>

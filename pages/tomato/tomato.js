@@ -43,6 +43,7 @@ Page({
   confirmFinish(event){
     let content = event.detail
     this.setData({ finishConfirmVisible :false})
+    //将完成的任务传到后端，修改对应id的description
     http.put(`/tomatoes/${this.tomato.id}`, {
       description: content,
       aborted: false

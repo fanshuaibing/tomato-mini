@@ -1,11 +1,10 @@
 {
   "pages": [
-    "pages/me/me",
     "pages/login/login",
-    "pages/audio/audio",
-    
-    "pages/tomato/tomato",
+    "pages/me/me",
     "pages/home/home",
+    "pages/audio/audio",
+    "pages/tomato/tomato",
     "pages/binding/binding"
   ],
   "window": {

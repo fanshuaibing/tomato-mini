@@ -8,10 +8,15 @@ Page({
     visibleConfirm: false,
     newTodos:'',
     visibleUpdate: false,
-    aftercompleted: false
+    aftercompleted: false,
+    selectCompleted:'',
+    selectTab: '',
   },
   onShow(){
     this.getLists()
+    if(!this.data.lists.length){
+      this.setData({selectTab: ''})
+    }
   },
   getLists(){//初始化
     http.get('/todos?completed = false').then(res => {
@@ -66,20 +71,26 @@ Page({
     this.setData({ visibleUpdate : false})
   },
   destroyTodo(event){//删除
+  console.log(event)
     let id = event.currentTarget.dataset.id
     let index = event.currentTarget.dataset.index
-    http.put(`/todos/${id}`,{
-      completed:true
-    }).then(res=>{
-      let todo =res.data.resource
-      this.data.lists[index] = todo
-      this.setData({lists: this.data.lists})
-      wx.showToast({
-        title: '确认完成',
-        icon: 'success',
-        duration: 1000
+    this.setData({ selectTab : index})
+    setTimeout(()=>{
+      http.put(`/todos/${id}`, {
+        completed: true
+      }).then(res => {
+        let todo = res.data.resource
+        this.data.lists[index] = todo
+        this.setData({ lists: this.data.lists })
+        this.setData({selectTab : ''})
+        wx.showToast({
+          title: '确认完成',
+          icon: 'success',
+          duration: 1000
+        })
       })
-    })
+    },1000)
+    
     
     
   },

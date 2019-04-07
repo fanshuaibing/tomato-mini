@@ -1,6 +1,0 @@
-<view class='audio-wrapper'>
-  <audio poster="{{poster}}" class='audio' name="{{name}}" 
-author="{{author}}" src="{{src}}" id="myAudio"   controls></audio>
-</view>
-
-

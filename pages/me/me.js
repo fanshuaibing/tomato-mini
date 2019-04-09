@@ -14,6 +14,7 @@ Page({
   fetchTomatoes() { //获取番茄历史
     http.get('/tomatoes', { is_group: "yes" })
       .then(response => {
+        console.log(response)
         this.setData({ tomatoes: response.data.resources })
       })
   },

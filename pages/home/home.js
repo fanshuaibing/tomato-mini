@@ -17,6 +17,7 @@ Page({
     if(!this.data.lists.length){
       this.setData({selectTab: ''})
     }
+    
   },
   getLists(){//初始化
     http.get('/todos?completed = false').then(res => {

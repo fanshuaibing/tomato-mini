@@ -9,10 +9,10 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.5.2",
 	"appid": "wx0d6eaad0d0ada6b4",
 	"projectname": "TodoList",
 	"debugOptions": {

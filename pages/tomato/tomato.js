@@ -2,6 +2,7 @@
 const {http} =require('../../lib/http.js')
 Page({
   timer:'',
+  tomato: {},
   data: {
     defalutSecond: 10,
     time: '',
@@ -9,14 +10,20 @@ Page({
     finishConfirmVisible: false,
     againButtonVisible: false,
     confirmVisible: false,
-    tomato: {}
+  },
+  onLoad(){
+    wx.vibrateLong()
   },
   onShow(){
-    this.startTimer()
+    console.log(this.data.defalutSecond)
     http.post('/tomatoes').then(response => {
       console.log(response)
       this.tomato = response.data.resource
     })
+    if(this.data.defalutSecond){
+      this.startTimer()
+    }
+    
   },
   startTimer() {
     this.setData({ timerStatus: 'stop' })
@@ -25,9 +32,11 @@ Page({
       this.data.defalutSecond = this.data.defalutSecond - 1
       this.changeTime()
       if (this.data.defalutSecond <= 0) {
+        wx.vibrateLong()
         this.setData({ againButtonVisible: true })
         this.setData({ finishConfirmVisible: true })
-        return this.clearTimer()
+        this.clearTimer()
+        return 
       }
     }, 1000)
   },
@@ -40,7 +49,10 @@ Page({
     this.setData({confirmVisible : true})
     this.clearTimer()
   },
+  //完成时的操作
   confirmFinish(event){
+    console.log(this.data.defalutSecond)
+    this.clearTimer()
     let content = event.detail
     this.setData({ finishConfirmVisible :false})
     //将完成的任务传到后端，修改对应id的description
@@ -48,23 +60,35 @@ Page({
       description: content,
       aborted: false
     })
-      .then(response => {
-        console.log(response)
-        wx.navigateBack({ to: -1 })
-      })
+    .then(response => {
+      console.log(response)
+      // wx.reLaunch({ url: '/pages/home/home' })
+    })
    
   }, 
-  confirmCancel() {
+  confirmCancel(event) {
     this.setData({ finishConfirmVisible: false })
-  },
-  confirmAbandon(event){
-    console.log(event)
-    this.setData({ confirmVisible: false })
-    this.setData({time: '00 : 00'})
-    this.setData({ againButtonVisible  : true})
     let content = event.detail
+    http.put(`/tomatoes/${this.tomato.id}`, {
+      description: content,
+      aborted: true
+    })
+      .then(response => {
+        console.log(response)
+        // wx.reLaunch({ url : '/pages/home/home'})
+      })
+  },
+  //放弃时的操作
+  confirmAbandon(event){
+    let content = event.detail
+    http.put(`/tomatoes/${this.tomato.id}`, {
+      description: content,
+      aborted: true
+    })
+      .then(response => {
+        wx.reLaunch({ url : '/pages/home/home'})
+      })
     
-   
   },
   hideAbandon() {
     this.setData({ confirmVisible: false })
@@ -89,5 +113,25 @@ Page({
       m = '0' +m
     }
     this.setData({time  : `${m} : ${s}`})
+  },
+  onHide() {
+    console.log('onhide')
+    if (this.data.defalutSecond) {
+      this.clearTimer()
+      http.put(`/tomatoes/${this.tomato.id}`, {
+        description: "退出放弃",
+        aborted: true
+      })
+    }
+  },
+  onUnload() { 
+    console.log('onUnload')
+    if (this.data.defalutSecond) {
+      this.clearTimer()
+      http.put(`/tomatoes/${this.tomato.id}`, {
+        description: "退出放弃",
+        aborted: true
+      })
+    }
   }
 })

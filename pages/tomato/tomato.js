@@ -4,7 +4,7 @@ Page({
   timer:'',
   tomato: {},
   data: {
-    defalutSecond: 10,
+    defalutSecond: 1500,
     time: '',
     timerStatus: 'stop',
     finishConfirmVisible: false,
@@ -15,9 +15,7 @@ Page({
     wx.vibrateLong()
   },
   onShow(){
-    console.log(this.data.defalutSecond)
     http.post('/tomatoes').then(response => {
-      console.log(response)
       this.tomato = response.data.resource
     })
     if(this.data.defalutSecond){
@@ -51,19 +49,26 @@ Page({
   },
   //完成时的操作
   confirmFinish(event){
-    console.log(this.data.defalutSecond)
     this.clearTimer()
     let content = event.detail
-    this.setData({ finishConfirmVisible :false})
-    //将完成的任务传到后端，修改对应id的description
-    http.put(`/tomatoes/${this.tomato.id}`, {
-      description: content,
-      aborted: false
-    })
-    .then(response => {
-      console.log(response)
-      // wx.reLaunch({ url: '/pages/home/home' })
-    })
+    this.setData({ finishConfirmVisible: false })
+    if(content){
+      http.put(`/tomatoes/${this.tomato.id}`, {
+        description: content,
+        aborted: false
+      })
+      .then(response => {
+        // wx.reLaunch({ url: '/pages/home/home' })
+      })
+    }else{
+      http.put(`/tomatoes/${this.tomato.id}`, {
+        description: content,
+        aborted: true
+      })
+        .then(response => {
+          wx.reLaunch({ url: '/pages/home/home' })
+        })
+    }
    
   }, 
   confirmCancel(event) {
@@ -74,7 +79,6 @@ Page({
       aborted: true
     })
       .then(response => {
-        console.log(response)
         // wx.reLaunch({ url : '/pages/home/home'})
       })
   },
@@ -115,7 +119,6 @@ Page({
     this.setData({time  : `${m} : ${s}`})
   },
   onHide() {
-    console.log('onhide')
     if (this.data.defalutSecond) {
       this.clearTimer()
       http.put(`/tomatoes/${this.tomato.id}`, {
@@ -125,7 +128,6 @@ Page({
     }
   },
   onUnload() { 
-    console.log('onUnload')
     if (this.data.defalutSecond) {
       this.clearTimer()
       http.put(`/tomatoes/${this.tomato.id}`, {

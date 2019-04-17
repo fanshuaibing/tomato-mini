@@ -1,5 +1,6 @@
 function dateFormat(date, format) {
   var time = getDate(date)
+  console.log(time)
   var rep = getRegExp("([yMdhmsqS])+", "g")
   var map = {
     M: time.getMonth() + 1,

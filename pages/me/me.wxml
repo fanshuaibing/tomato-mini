@@ -16,7 +16,6 @@
           我完成的任务
     </view>
     <view hover-class='hover-active' 
-         
           data-name="1" bindtap="changeTask">
           番茄历史
     </view>

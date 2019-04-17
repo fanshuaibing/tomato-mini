@@ -21,7 +21,6 @@ Page({
   },
   getLists(){//初始化
     http.get('/todos?completed = false').then(res => {
-      console.log(res)
       if (res.data.resources) {
         this.data.lists = res.data.resources
         this.setData({ lists: this.data.lists })
@@ -72,7 +71,6 @@ Page({
     this.setData({ visibleUpdate : false})
   },
   destroyTodo(event){//删除
-  console.log(event)
     let id = event.currentTarget.dataset.id
     let index = event.currentTarget.dataset.index
     this.setData({ selectTab : index})
